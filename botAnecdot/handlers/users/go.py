@@ -1,10 +1,14 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Command
+from kafka import KafkaProducer, KafkaConsumer
 
 from loader import dp
 
 from states import register
+
+producer_tosend = KafkaProducer(bootstrap_servers='localhost:9092')
+consumer_toget = KafkaConsumer('quickstart-events1',bootstrap_servers='localhost:9092')
 
 @dp.message_handler(Command('go'))
 
