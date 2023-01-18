@@ -1,1 +1,1 @@
-from .test import register
+from .test import reading
