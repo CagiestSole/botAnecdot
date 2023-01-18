@@ -13,10 +13,10 @@ id2label= {
     0:"negative",
     1:"positive",
 }
-config = AutoConfig.from_pretrained("./checkpoint-125000", label2id=label2id, id2label=id2label)
+config = AutoConfig.from_pretrained("./checkpoint-13000", label2id=label2id, id2label=id2label)
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-tokenizer = AutoTokenizer.from_pretrained("./checkpoint-125000")
-model = GPT2LMHeadModel.from_pretrained("./checkpoint-125000",config=config).to(DEVICE)
+tokenizer = AutoTokenizer.from_pretrained("./checkpoint-13000")
+model = GPT2LMHeadModel.from_pretrained("./checkpoint-13000",config=config).to(DEVICE)
 
 producer_tosend = KafkaProducer(bootstrap_servers='localhost:9092')
 consumer_toget = KafkaConsumer('quickstart-events2',bootstrap_servers='localhost:9092')
